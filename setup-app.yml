@@ -1,0 +1,16 @@
+# setup-app.yml
+
+---
+  - hosts: webservers
+    become: true 
+
+    vars:
+      path_to_app: "/var/www/html"
+
+
+    tasks:
+      -name: Uploadapplication file
+       copy:
+        src: ../index.php
+        dest: "{{ path_to_app }}"
+        mode: 0755
